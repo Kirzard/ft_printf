@@ -6,13 +6,12 @@
 /*   By: tadupin <tadupin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 13:40:11 by tadupin           #+#    #+#             */
-/*   Updated: 2026/11/02 14:23:47 by tadupin          ###   ########.fr       */
+/*   Updated: 2026/11/02 15:16:58 by tadupin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
-#include <stdio.h>
 
 
 static int	which_arg(va_list	arg, char param)
@@ -63,5 +62,22 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(arg);
-	return (i);
+	return (count);
 }
+/*#include<stdio.h>
+int main()
+{
+	
+	printf("d :%d\n", ft_printf(":%c:", '0'));
+	printf("d :%d\n", printf(":%c:", '0'));
+	printf("d :%d\n", ft_printf(": %c :", '0'));
+	printf("d :%d\n", printf(": %c :", '0'));
+	printf("d :%d\n", ft_printf(": %c:", '0' - 256));
+	printf("d :%d\n", printf(": %c:", '0' - 256));
+	printf("d :%d\n", ft_printf(":%c :", '0' + 256));
+	printf("d :%d\n", printf(":%c :", '0' + 256));
+	printf("d :%d\n", ft_printf(": %c %c %c :", '0', 0, '1'));
+	printf("d :%d\n", printf(": %c %c %c :", '0', 0, '1'));
+
+	return (0);
+}*/
