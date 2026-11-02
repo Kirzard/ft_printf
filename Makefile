@@ -3,7 +3,7 @@ NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = ft_printf.c put_adr_hex.c ft_putnbr_hex.c ft_putunsnbr_count.c ft_putstr_count.c ft_putnbr_count.c which_flag.c
+SRCS = ft_printf.c put_adr_hex.c ft_putnbr_hex.c ft_putunsnbr_count.c ft_putstr_count.c ft_putnbr_count.c
        
 OBJS = $(SRCS:.c=.o)
 

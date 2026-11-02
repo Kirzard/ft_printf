@@ -6,7 +6,7 @@
 /*   By: tadupin <tadupin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 13:40:11 by tadupin           #+#    #+#             */
-/*   Updated: 2026/10/30 13:29:38 by tadupin          ###   ########.fr       */
+/*   Updated: 2026/11/02 14:23:47 by tadupin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,11 @@
 #include "libft/libft.h"
 #include <stdio.h>
 
-static int	put_flag(int *flag, int prefixe)
-{
-	int	i;
 
-	i = 0;
-	if (prefixe)
-	{
-		if(flag[0] == 2)
-		{
-			while(i < flag[1])
-			{
-				write(1, "0", 1);
-				i++;
-			}
-		}
-	}
-	else
-	{
-		if(flag[0] == 1)
-		{
-			while(i < flag[1])
-			{
-				write(1, " ", 1);
-				i++;
-			}
-		}
-	}
-	return (i);
-}
-static int	which_arg(va_list	arg, char param, int *flag)
+static int	which_arg(va_list	arg, char param)
 {
 	int	count;
 
-	put_flag(flag, 1);
 	count = 1;
 	if (param == 'c')
 		ft_putchar_fd(va_arg(arg, int), 1);
@@ -66,7 +37,6 @@ static int	which_arg(va_list	arg, char param, int *flag)
 	else if (param == '%')
 		ft_putchar_fd('%', 1);
 	return (count);
-	put_flag(flag, 0);
 }
 
 int	ft_printf(const char *format, ...)
@@ -74,10 +44,8 @@ int	ft_printf(const char *format, ...)
 	va_list		arg;
 	size_t		i;
 	int			count;
-	int			flag[2];
 
 	i = 0;
-	flag[0] = 0;
 	count = 0;
 	va_start(arg, format);
 	while (format[i])
@@ -91,8 +59,7 @@ int	ft_printf(const char *format, ...)
 		if (!format[i])
 			break ;
 		i++;
-		count += which_flag((char *)&format[i], flag);
-		count += which_arg(arg, format[i], flag);
+		count += which_arg(arg, format[i]);
 		i++;
 	}
 	va_end(arg);
